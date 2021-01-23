@@ -1,3 +1,4 @@
+import 'package:app_template/base/intl/base_localizations.dart';
 import 'package:app_template/base/util/adapt.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -8,7 +9,7 @@ class Alert {
     @required BuildContext context,
     String title,
     @required String content,
-    @required String confirmText,
+    String confirmText,
     void Function() onConfirm,
   }) {
     showCupertinoDialog(
@@ -46,7 +47,7 @@ class Alert {
                   },
                   child: FlatButton(
                     child: new Text(
-                      confirmText ?? "",
+                      confirmText ?? BaseLocalizations.of(context).confirmText,
                       style: TextStyle(
                         color: Color(0xFF3A6FEE),
                         fontSize: 14.spx,
@@ -70,8 +71,8 @@ class Alert {
     String title,
     @required String content,
     Color color,
-    @required String cancelText,
-    @required String confirmText,
+    String cancelText,
+    String confirmText,
     void Function() onCancel,
     void Function() onConfirm,
   }) {
@@ -110,7 +111,7 @@ class Alert {
                 child: Container(
                   child: FlatButton(
                     child: Text(
-                      cancelText ?? "",
+                      cancelText ?? BaseLocalizations.of(context).cancelText,
                       style: TextStyle(
                         color:
                             isDarkMode ? Color(0xFFd1d1d1) : Color(0xFF333333),
@@ -133,7 +134,7 @@ class Alert {
                 child: Container(
                   child: FlatButton(
                     child: new Text(
-                      confirmText ?? "",
+                      confirmText ?? BaseLocalizations.of(context).confirmText,
                       style: TextStyle(
                         color: color ??
                             (isDarkMode
@@ -159,7 +160,7 @@ class Alert {
     @required List items,
     String itemKey,
     void Function(int index) onSelected,
-    @required String cancelText,
+    String cancelText,
   }) {
     bool isDarkMode = Theme.of(context).brightness == Brightness.dark;
     showModalBottomSheet<int>(
@@ -211,7 +212,7 @@ class Alert {
               ),
               ListTile(
                 title: Text(
-                  cancelText ?? "取消",
+                  cancelText ?? BaseLocalizations.of(context).cancelText,
                   textAlign: TextAlign.center,
                 ),
                 onTap: () {
@@ -234,8 +235,8 @@ class Alert {
     @required List datas,
     String dataKey,
     int initialItem = 0,
-    @required String cancelText,
-    @required String confirmText,
+    String cancelText,
+    String confirmText,
     void Function() onCancel,
     void Function(int index) onConfirm,
   }) {
@@ -308,7 +309,7 @@ class Alert {
                       onCancel?.call();
                     },
                     child: Text(
-                      cancelText ?? "",
+                      cancelText ?? BaseLocalizations.of(context).cancelText,
                       style: TextStyle(
                           color: isDarkMode
                               ? Color(0xFF999999)
@@ -325,7 +326,7 @@ class Alert {
                       onConfirm?.call(selectedValue);
                     },
                     child: Text(
-                      confirmText ?? "",
+                      confirmText ?? BaseLocalizations.of(context).confirmText,
                       style:
                           TextStyle(color: Color(0xFF3A6FEE), fontSize: 15.spx),
                     ),

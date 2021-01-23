@@ -1,3 +1,4 @@
+import 'package:app_template/base/intl/base_localizations.dart';
 import 'package:app_template/base/util/adapt.dart';
 import 'package:flutter/material.dart';
 
@@ -21,7 +22,7 @@ class LoadingView extends StatelessWidget {
             ),
             SizedBox(height: 16.wpx),
             Text(
-              message ?? "",
+              message ?? BaseLocalizations.of(context).loading,
               style: TextStyle(color: Color(0xFF999999), fontSize: 14.spx),
             ),
           ],

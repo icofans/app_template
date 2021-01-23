@@ -1,4 +1,6 @@
+import 'package:app_template/base/intl/base_localizations.dart';
 import 'package:app_template/base/util/adapt.dart';
+import 'package:app_template/base/widget/widgets.dart';
 import 'package:flutter/material.dart';
 
 const String networkErrorImage = "assets/images/ico_network_error.png";
@@ -22,9 +24,9 @@ class ErrorView extends StatelessWidget {
   const ErrorView(
       {Key key,
       this.image,
-      @required this.title,
-      @required this.message,
-      @required this.buttonText,
+      this.title,
+      this.message,
+      this.buttonText,
       this.loadingView,
       this.errorType = ErrorType.unknown,
       this.onTap})
@@ -32,11 +34,15 @@ class ErrorView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Widget loadingWidget = loadingView ??
+        LoadingView(
+          message: BaseLocalizations.of(context).retryLoadingText,
+        );
     bool retryLoading = false;
     return StatefulBuilder(
       builder: (context, setState) {
         return retryLoading
-            ? loadingView
+            ? loadingWidget
             : Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -59,7 +65,7 @@ class ErrorView extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: <Widget>[
                         Text(
-                          title ?? "",
+                          title ?? BaseLocalizations.of(context).error,
                           style: TextStyle(
                             fontSize: 15.spx,
                             color: Color(0xFF999999),
@@ -67,7 +73,7 @@ class ErrorView extends StatelessWidget {
                         ),
                         SizedBox(height: 8.wpx),
                         Text(
-                          message ?? '',
+                          message ?? BaseLocalizations.of(context).errorTip,
                           style: TextStyle(
                             fontSize: 13.spx,
                             color: Color(0xFF999999),
@@ -83,7 +89,7 @@ class ErrorView extends StatelessWidget {
                         borderSide:
                             BorderSide(color: Colors.blue[300], width: 1),
                         child: Text(
-                          buttonText ?? "",
+                          buttonText ?? BaseLocalizations.of(context).retryText,
                           style: TextStyle(
                               wordSpacing: 5, color: Colors.blue[300]),
                         ),
@@ -95,7 +101,7 @@ class ErrorView extends StatelessWidget {
                         textColor: Colors.grey,
                         splashColor: Theme.of(context).splashColor,
                         onPressed: () {
-                          if (loadingView != null) {
+                          if (loadingWidget != null) {
                             setState(() {
                               retryLoading = true;
                             });

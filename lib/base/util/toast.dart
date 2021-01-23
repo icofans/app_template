@@ -1,3 +1,4 @@
+import 'package:app_template/base/intl/base_localizations.dart';
 import 'package:app_template/base/util/adapt.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -6,7 +7,6 @@ import 'package:fluttertoast/fluttertoast.dart';
 class Toast {
   // 普通Toast
   static void show({BuildContext context, IconData icon, String msg}) {
-    msg = msg ?? "未知错误";
     if (context != null) {
       icon = icon ?? Icons.error;
       FToast fToast = FToast();
@@ -24,7 +24,7 @@ class Toast {
             Icon(icon, color: Colors.white, size: 44),
             SizedBox(height: 8.0),
             Text(
-              msg,
+              msg ?? BaseLocalizations.of(context).unknown,
               style: TextStyle(
                 fontSize: 15.spx,
                 color: Colors.white,
@@ -42,7 +42,7 @@ class Toast {
       );
     } else {
       Fluttertoast.showToast(
-        msg: msg,
+        msg: msg ?? "~",
         timeInSecForIosWeb: 1,
         backgroundColor: Color(0xB2000000),
         fontSize: 14.0.spx,
@@ -81,7 +81,7 @@ class Toast {
                 SizedBox(height: 8),
                 Container(
                   child: Text(
-                    msg ?? "加载中",
+                    msg ?? BaseLocalizations.of(context).loading,
                     style: TextStyle(color: Colors.white),
                   ),
                 )

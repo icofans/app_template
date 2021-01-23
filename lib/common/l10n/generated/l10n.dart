@@ -45,6 +45,16 @@ class S {
     );
   }
 
+  /// `test0`
+  String get test0 {
+    return Intl.message(
+      'test0',
+      name: 'test0',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `test`
   String get test1 {
     return Intl.message(

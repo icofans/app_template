@@ -1,3 +1,4 @@
+import 'package:app_template/base/intl/base_localizations.dart';
 import 'package:app_template/base/util/adapt.dart';
 import 'package:flutter/material.dart';
 
@@ -10,8 +11,7 @@ const IconData emptyIcon = IconData(0xe618, fontFamily: "iconfont");
 class EmptyView extends StatelessWidget {
   final String image;
   final String message;
-  const EmptyView({Key key, @required this.message, this.image})
-      : super(key: key);
+  const EmptyView({Key key, this.message, this.image}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +31,7 @@ class EmptyView extends StatelessWidget {
         ),
         SizedBox(height: 24.wpx),
         Text(
-          message ?? "",
+          message ?? BaseLocalizations.of(context).empty,
           style: TextStyle(
             fontSize: 17.spx,
             color: Color(0xFFc4d1f5),

@@ -1,7 +1,7 @@
 import 'package:app_template/base/view_model/app_model/app_locale_model.dart';
 import 'package:app_template/base/view_model/app_model/app_theme_model.dart';
 import 'package:app_template/base/widget/feedback_widget.dart';
-import 'package:app_template/generated/l10n.dart';
+import 'package:app_template/common/l10n/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

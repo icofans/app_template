@@ -1,3 +1,4 @@
+import 'package:app_template/base/intl/base_localizations.dart';
 import 'package:app_template/base/util/toast.dart';
 import 'package:flutter/material.dart';
 
@@ -39,7 +40,7 @@ class _ExitScopeState extends State<ExitScope> {
         DateTime.now().difference(_lastTime) > widget.duration) {
       _lastTime = DateTime.now();
 
-      Toast.show(msg: widget.message ?? "双击退出");
+      Toast.show(msg: widget.message ?? BaseLocalizations.of(context).exitTip);
       return Future.value(false);
     }
     return Future.value(true);

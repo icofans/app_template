@@ -1,7 +1,8 @@
 import 'package:app_template/base/config/config.dart';
+import 'package:app_template/base/intl/base_localizations.dart';
 import 'package:app_template/base/view_model/app_model/app_locale_model.dart';
 import 'package:app_template/base/view_model/app_model/app_theme_model.dart';
-import 'package:app_template/generated/l10n.dart';
+import 'package:app_template/common/l10n/generated/l10n.dart';
 import 'package:app_template/common/routes/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -63,6 +64,7 @@ class MyApp extends StatelessWidget {
       darkTheme: context.watch<AppThemeModel>().darkTheme,
       localizationsDelegates: const [
         S.delegate,
+        BaseLocalizations.delegate,
         GlobalMaterialLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate
@@ -72,8 +74,7 @@ class MyApp extends StatelessWidget {
         return;
       },
       localeResolutionCallback: (locale, supportedLocales) {
-        print(locale);
-        return;
+        return locale;
       },
       locale: context.watch<AppLocaleModel>().getLocale(),
       routes: Routes.routes,

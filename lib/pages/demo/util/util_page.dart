@@ -46,7 +46,7 @@ class _UtilPageState extends State<UtilPage> {
               ),
               RaisedButton(
                 onPressed: () {
-                  Toast.showLoading(context: context, msg: "加载中");
+                  Toast.showLoading(context: context);
                   context.read<ToastModel>().fetchData(
                     onDone: () {
                       Toast.hideLoading();
@@ -64,7 +64,6 @@ class _UtilPageState extends State<UtilPage> {
                     context: context,
                     title: "提示",
                     content: "这是一个提示框",
-                    confirmText: "确认",
                   );
                 },
                 child: Text("这是一个按钮的提示框"),
@@ -75,8 +74,6 @@ class _UtilPageState extends State<UtilPage> {
                     context: context,
                     title: "提示",
                     content: "这是个提示框",
-                    cancelText: "取消",
-                    confirmText: "确认",
                   );
                 },
                 child: Text("这是两个按钮的提示框"),
@@ -96,8 +93,6 @@ class _UtilPageState extends State<UtilPage> {
                   Alert.showPicker(
                     context: context,
                     datas: ["1", "2", "3", "4", "6", "8", "19", "32", "34234"],
-                    cancelText: "取消",
-                    confirmText: "确认",
                   );
                 },
                 child: Text("这是底部选择框"),

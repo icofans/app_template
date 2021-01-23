@@ -44,19 +44,15 @@ class _WidgetPageState extends State<WidgetPage> {
             onLoad: model.loadEnabled ? model.onLoad : null,
             onRefresh: model.onRefresh,
             firstRefresh: true,
-            firstRefreshWidget: LoadingView(message: "加载中"),
+            firstRefreshWidget: LoadingView(),
             emptyWidget: model.isEmpty
-                ? EmptyView(message: "空空如也")
+                ? EmptyView()
                 : (model.isError
                     ? ErrorView(
-                        message: "加载失败",
-                        title: "未知错误",
-                        buttonText: "重试",
                         onTap: () {
                           model.failData = false;
                           model.initData();
                         },
-                        loadingView: LoadingView(message: "重试中"),
                       )
                     : null),
             child: ListView.builder(

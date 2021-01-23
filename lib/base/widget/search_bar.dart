@@ -1,3 +1,4 @@
+import 'package:app_template/base/intl/base_localizations.dart';
 import 'package:flutter/material.dart';
 
 class SearchBar extends StatelessWidget implements PreferredSizeWidget {
@@ -128,7 +129,8 @@ class _AppBarState extends State<_AppBar> {
                     onChanged: (value) => _onChanged(value),
                     onEditingComplete: () => _onSearch(_controller.text),
                     decoration: InputDecoration(
-                      hintText: widget.hint ?? "搜索",
+                      hintText: widget.hint ??
+                          BaseLocalizations.of(context).searchText,
                       hintStyle: TextStyle(color: Color(0xFF999999)),
                       // filled: true,
                       // fillColor: Colors.white,
@@ -175,7 +177,7 @@ class _AppBarState extends State<_AppBar> {
     Widget _icon = _title.isNotEmpty && !_showSearch
         ? Icon(Icons.search)
         : Text(
-            '取消',
+            BaseLocalizations.of(context).cancelText,
             style: TextStyle(
                 fontSize: 15,
                 color: isDarkMode ? Color(0xFF999999) : Color(0xFF666666)),
